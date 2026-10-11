@@ -1,4 +1,4 @@
-# RecallRush 🚀
+# StudySnakes 🚀
 
 RecallRush is a gamified learning platform that converts your study notes into a high-stakes "Snakes & Ladders" game. Powered by AI, it transforms raw text into interactive flashcards where correct answers propel you forward and mistakes drag you down.
 

@@ -16,7 +16,7 @@ export function Navbar() {
         </Link>
         
         <nav className="flex items-center gap-8">
-          {session ? (
+          {session && (
             <>
               <Link href="/dashboard" className="text-sm font-black text-gray-400 hover:text-teal-400 transition-all flex items-center gap-2 uppercase tracking-widest">
                 <UserIcon className="w-4 h-4" /> Dashboard
@@ -28,11 +28,6 @@ export function Navbar() {
               >
                 <LogOut className="w-4 h-4" /> Logout
               </button>
-            </>
-          ) : (
-            <>
-              <Link href="/upload" className="text-sm font-black text-gray-400 hover:text-white transition-all uppercase tracking-widest">Play as Guest</Link>
-              <Link href="/login" className="text-sm font-black text-teal-500 hover:text-teal-400 transition-all uppercase tracking-widest border border-teal-500/30 px-4 py-2 rounded-xl hover:bg-teal-500/5">Login / Sign up</Link>
             </>
           )}
         </nav>

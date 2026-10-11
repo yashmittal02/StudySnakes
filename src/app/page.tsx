@@ -27,7 +27,7 @@ export default function Home() {
         </p>
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
-          {session ? (
+          {session && (
             <>
               <Link 
                 href="/upload" 
@@ -45,25 +45,6 @@ export default function Home() {
               >
                 <LogOut className="w-5 h-5" /> Logout
               </button>
-            </>
-          ) : (
-            <>
-              <Link 
-                href="/login" 
-                className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 font-bold text-white bg-teal-600 rounded-full overflow-hidden transition-transform hover:scale-105 active:scale-95 glow-primary"
-              >
-                <span className="relative z-10 flex items-center gap-2">
-                  Login / Sign Up
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </span>
-              </Link>
-              
-              <Link 
-                href="/upload" 
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 font-bold text-gray-300 glass-panel rounded-full hover:bg-white/10 transition-colors border border-white/10"
-              >
-                Play as Guest
-              </Link>
             </>
           )}
         </div>

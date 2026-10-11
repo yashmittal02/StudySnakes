@@ -22,7 +22,6 @@ export async function POST(req: Request) {
     }
 
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-flash-latest" });
 
     const prompt = `
       You are an expert educational AI. 
@@ -44,7 +43,37 @@ export async function POST(req: Request) {
       "${notes}"
     `;
 
-    const result = await model.generateContent(prompt);
+    const modelsToTry = [
+      "gemini-1.5-flash",
+      "gemini-2.5-flash",
+      "gemini-2.0-flash",
+      "gemini-flash-latest",
+      "gemini-1.5-pro",
+      "gemini-pro-latest"
+    ];
+
+    let result = null;
+    let lastError: unknown = null;
+
+    for (const modelName of modelsToTry) {
+      try {
+        console.log(`Attempting generation with model: ${modelName}`);
+        const model = genAI.getGenerativeModel({ model: modelName });
+        result = await model.generateContent(prompt);
+        if (result && result.response) {
+          console.log(`Successfully generated with model: ${modelName}`);
+          break;
+        }
+      } catch (err: unknown) {
+        console.warn(`Model ${modelName} failed:`, err);
+        lastError = err;
+      }
+    }
+
+    if (!result) {
+      throw lastError || new Error("All fallback models failed to generate content.");
+    }
+
     let outputText = result.response.text();
     
     // Clean up potential markdown formatting if the model fails to follow instructions

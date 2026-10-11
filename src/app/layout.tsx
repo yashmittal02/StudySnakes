@@ -7,7 +7,7 @@ import { Navbar } from "@/components/Navbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "RecallRush",
+  title: "StudySnakes",
   description: "Gamified learning web app with AI flashcards",
 };
 
@@ -17,8 +17,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${inter.className} min-h-screen flex flex-col`}>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: `
+          (function() {
+            try {
+              const theme = localStorage.getItem('studysnakes_theme') || 'dark';
+              document.documentElement.className = theme;
+            } catch (e) {}
+          })()
+        `}} />
+      </head>
+      <body className={`${inter.className} min-h-screen flex flex-col transition-colors duration-300`}>
         <Providers>
           <Navbar />
           <main className="flex-1 flex flex-col">{children}</main>

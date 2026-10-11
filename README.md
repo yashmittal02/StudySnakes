@@ -1,40 +1,56 @@
-<<<<<<< HEAD
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# RecallRush 🚀
 
-## Getting Started
+RecallRush is a gamified learning platform that converts your study notes into a high-stakes "Snakes & Ladders" game. Powered by AI, it transforms raw text into interactive flashcards where correct answers propel you forward and mistakes drag you down.
 
-First, run the development server:
+## ✨ Features
+- **AI Flashcard Generation**: Upload any `.txt` file or paste notes to generate semantic MCQs.
+- **Recall Teal Rebrand**: A modern, high-tech interface optimized for readability and high-performance feel.
+- **Personalized Profiles**: Track your XP, Level, and customize your profile with an avatar.
+- **Smart Feedback System**: integrated suggestion tool to help us improve the platform.
+- **Dynamic Themes**: Seamless switching between optimized Dark and Light modes.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🛠️ Getting Started
+
+1. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+
+2. **Setup Environment**:
+   Create a `.env` file with:
+   ```env
+   DATABASE_URL="postgresql://USER:PASSWORD@HOST/DATABASE?sslmode=require"
+   NEXTAUTH_SECRET="generate-a-long-random-secret"
+   NEXTAUTH_URL="http://localhost:3000"
+   GEMINI_API_KEY="your_gemini_api_key"
+   ADMIN_EMAILS="admin@example.com"
+   ```
+
+3. **Database Migration**:
+   ```bash
+   npx prisma migrate deploy
+   ```
+
+   Use a Neon pooled connection string for `DATABASE_URL` in Vercel. Keep
+   `DIRECT_URL` as the unpooled Neon connection string if you run Prisma
+   migrations from a CI/CD job.
+
+   Generate a strong secret with:
+   ```bash
+   npx auth secret
+   ```
+
+4. **Run Development Server**:
+   ```bash
+   npm run dev
+   ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-=======
-# RecallRush
->>>>>>> 31e285c68cf8029e99f400e561b9cb22b534f67a
+## 🧪 Tech Stack
+- **Framework**: Next.js 16 (App Router)
+- **Database**: SQLite with Prisma ORM
+- **Styling**: Tailwind CSS (Teal Theme)
+- **Auth**: NextAuth.js
+- **Icons**: Lucide React
+- **Animations**: Framer Motion
